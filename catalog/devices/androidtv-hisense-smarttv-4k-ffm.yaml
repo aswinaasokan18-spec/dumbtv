@@ -4,7 +4,9 @@ platform: androidtv
 # Live hardware session with manual ADB; not an end-to-end run of all.sh/verify.sh.
 status: partial
 tested_on: "RTT2.220118.001"
-models: []
+models:
+  - "Hisense SmartTV 4K FFM"
+  - "VU TV FFM (Vu brand, manufacturer Hisense, same songshan board and build)"
 adb:
   port: 5555
   transport: wifi
@@ -75,8 +77,13 @@ notes: >-
   com.google.android.apps.tv.launcherx. No PROTECTED or failed disables. The
   first seven survived two reboots; the launcher swap survived the one after it. Netflix launched
   from dumbtv home and HOME returned to it. Device codename songshan.
+  Repeated on 2026-10-23 on a Vu-branded set (ro.product.brand VU, model
+  VU TV FFM, ro.product.manufacturer Hisense, build RTT2.220118.001). It
+  shipped without com.hisense.alexa and com.hisense.service.message. The other
+  disables, the launcher swap, Private DNS and an apps.order copied from the
+  old Google TV row all behaved the same, and held after a reboot.
 known_limits:
-  - "One TV and one firmware build; other Hisense Google TV models may differ."
+  - "Two sets (Hisense and Vu) on one firmware build; other Hisense-made Google TV models may differ."
   - >-
     all.sh, debloat.sh and verify.sh were not run: debloat.sh refuses non-Amazon
     hardware, and verify.sh checks Fire OS hosts. AdGuard Private DNS was used
